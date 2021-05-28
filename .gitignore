@@ -1,3 +1,11 @@
+#Intellij
+.idea/
+
+*/node_modules/
+*/*.iml
+express-mongo-09/.env
+*/*.env
+
 # Logs
 logs
 *.log
