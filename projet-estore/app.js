@@ -1,3 +1,4 @@
+
 const express = require("express");
 const userRouter = require("./routes/user");
 const bodyParser = require('body-parser');
@@ -13,18 +14,13 @@ const app = express();
 // le server de bdd
 require("./config/database")
 
-// middleware morgan
+// middlewares
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
 }
-
-// middleware body-parser
 app.use(bodyParser.json());
-
-// middleware cookie-parser
 app.use(cookieParser());
 
-// middelware des routes
-app.use('/api', userRouter);
+app.use('/api/users', userRouter);
 
 module.exports = app;
