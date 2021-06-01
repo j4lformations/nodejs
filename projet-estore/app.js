@@ -1,5 +1,6 @@
 
 const express = require("express");
+const authRouter = require("./routes/auth");
 const userRouter = require("./routes/user");
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -21,6 +22,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-app.use('/api/users', userRouter);
+// routes
+app.use('/api/auth', authRouter);
 
 module.exports = app;
