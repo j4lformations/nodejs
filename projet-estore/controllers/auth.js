@@ -31,24 +31,45 @@ const createAndSendToken = (user, statusCode, res) => {
         });
 };
 
+exports.formSignup = async (req, res) => {
+    res
+        .status(500)
+        .json(
+            {
+                status: 'error',
+                message: 'This route is not defined! Please use /signup instead'
+            }
+        );
+};
+
 exports.signup = async (req, res) => {
     try {
-        const {name, email, password, passwordConfirm} = await req.body;
+        const {name, email, password, passwordConfirm, role} = await req.body;
         let newUser = new User({
             name: name,
             email: email,
             password: password,
-            passwordConfirm: passwordConfirm
+            passwordConfirm: passwordConfirm,
+            role: role
         });
-        console.log(newUser);
         newUser = await newUser.save();
-        console.log(newUser);
-        createAndSendToken(newUser, 201, res);
+        createAndSendToken(newUser, 200, res);
     } catch (error) {
-        await res
-            .status(401)
+        return res
+            .status(400)
             .json(errorHandler(error));
     }
+};
+
+exports.formLogin = async (req, res) => {
+    res
+        .status(500)
+        .json(
+            {
+                status: 'error',
+                message: 'This route is not defined! Please use /signup instead'
+            }
+        );
 };
 
 exports.login = async (req, res) => {
@@ -61,7 +82,8 @@ exports.login = async (req, res) => {
             return await res
                 .status(401)
                 .json({
-                    error: "Email and/or password is/are incorrect"
+                    status: 'error',
+                    message: 'Email and/or password is/are incorrect'
                 });
         }
 
@@ -79,7 +101,7 @@ exports.logout = async (req, res) => {
     await res
         .status(200)
         .json({
-            msg: "Deconnexion du systeme !!!"
+            message: "Deconnexion du systeme !!!"
         });
 };
 
@@ -126,7 +148,7 @@ exports.protection = async (req, res, next) => {
                 .json(error);
         }
 
-        // Ici le suer rempli toutes les conditions pour acceder à l'itineraire protegé
+        // Ici le user rempli toutes les conditions pour acceder à l'itineraire protegé
         req.user = currentUser;
     } catch (error) {
         res
@@ -150,5 +172,34 @@ exports.restricTo = (...roles) => {
                 .json(error);
         }
         next();
+    }
+};
+
+exports.updatePassword = async (req, res, next) => {
+    try {
+        // 1) Obtenir le User de la collection
+        const user = await User.findById(req.user.id).select('+password');
+
+        // 2) Vérifiez si le mot de passe actuel est correct
+        if (!(await user.correctPassword(req.body.passwordCurrent, user.password))) {
+            const error = [
+                {
+                    message: "Your current password is wrong."
+                }
+            ]
+            return await res
+                .status(400)
+                .json(errorHandler(error));
+        }
+
+        // 3) Si oui, mettez à jour le mot de passe
+        user.password = req.body.password;
+        user.passwordConfirm = req.body.passwordConfirm;
+        await user.save();
+        createAndSendToken(user, 200, req, res);
+    } catch (error) {
+        await res
+            .status(400)
+            .json(errorHandler(error));
     }
 };

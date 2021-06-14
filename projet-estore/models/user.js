@@ -11,6 +11,7 @@ const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
 
 const {v4: uuidv1} = require('uuid');
+
 // Un module externe nodejs permettant de capitaliser une chaine de caracteres.
 const {capitalCase} = require('capital-case');
 
@@ -19,7 +20,7 @@ const beautifyUnique = require('mongoose-beautiful-unique-validation');
 
 const Schema = mongoose.Schema;
 
-// creation du UserSchema
+// creation duSchema User
 const UserSchema = new Schema({
     name: {
         type: String,
@@ -48,8 +49,12 @@ const UserSchema = new Schema({
             validator: function (el) {
                 return el === this.password;
             },
-            message : 'Passwords are not the same !'
+            message: 'Passwords are not the same !'
         }
+    },
+    photo: {
+        type: String,
+        default: 'default.jpg'
     },
     passwordChangedAt: Date,
     passwordResetToken: String,
@@ -60,7 +65,7 @@ const UserSchema = new Schema({
     },
     role: {
         type: String,
-        enum: ['user', 'admin'],
+        enum: ['admin', 'user', 'employe'],
         default: 'user'
     },
     history: {
@@ -151,4 +156,5 @@ UserSchema.methods = {
 
 UserSchema.plugin(beautifyUnique);
 
-module.exports = mongoose.model("User", UserSchema);
+const User = mongoose.model("User", UserSchema);
+module.exports = User;
