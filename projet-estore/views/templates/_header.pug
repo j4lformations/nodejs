@@ -1,1 +1,27 @@
-h1 Le Header
+div(class='container gx-0')
+        //TOP-HEADER
+        div(class='topheader d-flex flex-row justify-content-between')
+            div(class='d-flex flex-row')
+                a(href='#new') se connecter
+                a(href='#new') inscription
+            div(class='d-flex flex-row')
+                a(href='#new') contact
+
+        //APP-HEADER
+        div(class='appheader d-flex flex-row justify-content-between align-items-center')
+            div
+                img(class='logo' src="img/logo.svg" alt='logo')
+            div(class='slogan') e-store
+
+        //NAV-HEADER
+        div(id='myTopNav' class='topnav')
+            a(href='#categories') categories
+            a(href='#categorie') categorie
+            a(href='#about') about
+            div(class='search-container')
+                form
+                    input(placeholder='Rechercher...' type='text')
+                    button(type='submit')
+                        i(class='fas fa-search')
+            a(href='javascript:void(0);' class='icon' onclick='myFunction()')
+                i(class='fas fa-bars')

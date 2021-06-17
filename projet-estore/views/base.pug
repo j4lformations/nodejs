@@ -1,16 +1,41 @@
 doctype html
-html
-    head
-        title Page Accueil
-        link(rel='stylesheet' href='css/app.css')
-        link(rel='icon' href='img/favicon.png')
+head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0')
+    meta(http-equiv='X-UA-Compatible' content='ie=edge')
+    script(src='https://kit.fontawesome.com/ec63adeb54.js')
+    script(src='js/app.js' defer)
+    link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css')
+    link(rel='stylesheet' href='css/app.css')
+    link(rel='icon' href='img/favicon.png')
+    title Page Accueil
 
-    body
-        //HEADER
-        include templates/_header 
+body
+    //HEADER
+    div(class='container gx-0')
+        //TOP-HEADER
+        div(class='topheader d-flex flex-row justify-content-between')
+            div(class='d-flex flex-row')
+                a(href='#new') se connecter
+                a(href='#new') inscription
+            div(class='d-flex flex-row')
+                a(href='#new') contact
 
-        //CONTENT
-        include templates/_content
+        //APP-HEADER
+        div(class='appheader d-flex flex-row justify-content-between align-items-center')
+            div
+                img(class='logo' src="img/logo.svg" alt='logo')
+            div(class='slogan') e-store
 
-        //FOOTER
-        include templates/_footer
+        //NAV-HEADER
+        div(id='myTopNav' class='topnav')
+            a(href='#categories') categories
+            a(href='#categorie') categorie
+            a(href='#about') about
+            div(class='search-container')
+                form
+                    input(placeholder='Rechercher...' type='text')
+                    button(type='submit')
+                        i(class='fas fa-search')
+            a(href='javascript:void(0);' class='icon' onclick='myFunction()')
+                i(class='fas fa-bars')
