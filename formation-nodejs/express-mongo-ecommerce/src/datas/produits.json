@@ -1,0 +1,42 @@
+[
+  {
+    "images": [
+      "Dell XPS 13.png"
+    ],
+    "_id": "5eb860171e2a263c0c422af6",
+    "enseigne": {
+      "_id": "5eb8555a2ca8e7112ce74019",
+      "nom": "Dell",
+      "id": "5eb8555a2ca8e7112ce74019"
+    },
+    "nom": "Xps 13",
+    "cpu": "Intel Core i5 - i7",
+    "ram": "4 Go - 16 Go",
+    "stockage": "SSD 256 Go",
+    "prix": 949.89,
+    "ecran": "FHD 13,3 pouce",
+    "vga": "Intel UHD Graphics 620",
+    "description": "Le Dell XPS 13 est étiqueté « meilleur ultrabook » depuis des années. Il a dû céder la plus haute marche du podium au MateBook 13 de Huawei, c'est vrai, mais il reste sans aucun doute l'un des modèles incontournables pour les étudiants de tout niveau. Dans sa version la plus récente, Dell a déplacé la webcam au centre, en haut de l'écran, assurant un angle de vue parfait pendant les communications vidéo. Qui plus est, le modèle 4K délivre un rendu des couleurs époustouflants et garantit une qualité d’affichage supérieure à la concurrence.",
+    "id": "5eb860171e2a263c0c422af6"
+  },
+  {
+    "images": [
+      "Huawei Matebook 13.png"
+    ],
+    "_id": "5eb860b81e2a263c0c422afa",
+    "enseigne": {
+      "_id": "5eb8554c2ca8e7112ce74018",
+      "nom": "Huawei",
+      "id": "5eb8554c2ca8e7112ce74018"
+    },
+    "nom": "Matebook 13",
+    "cpu": "Intel Core i5 - i7",
+    "ram": "8 Go",
+    "stockage": "SSD 256 Go - 512 Go",
+    "prix": 1399.99,
+    "ecran": "13,3 pouces 2K",
+    "vga": "Intel UHD Graphics 620",
+    "description": "Huawei peaufine ses ultrabooks depuis quelques années. Il semblerait que son grand moment soit arrivé avec ce Matebook 13, aussi élégant que puissant et, plus important encore, proposé à un prix très compétitif. Son châssis en aluminium le rend presque plus beau et plus agréable qu’un MacBook Air. Tandis que sa carte graphique dédiée Nvidia lui permet de répondre à un grand nombre de tâches quotidiennes. Bien évidemment, il ne s’agit pas d’un ultraportable gamer mais vous pouvez enchaîner les parties de jeux moins gourmands comme Hearthstone.",
+    "id": "5eb860b81e2a263c0c422afa"
+  }
+]

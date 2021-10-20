@@ -1,0 +1,59 @@
+// Crée par Joachim Zadi le 23/04/2020 à 10:48
+// ===========================================
+// const express = require("express");
+// const {getAllTours, createTour, findTour, updateTour, deleteTour, aliasTopTours, getTourStats} = require("../controllers/toursController").controller;
+// const router = express.Router();
+//
+// router
+//     .route("/")
+//     .get(getAllTours)
+//     .post(createTour);
+//
+// router
+//     .route("/top-5-sheap")
+//     .get(aliasTopTours, getAllTours)
+//
+// router
+//     .route("/tour-stats")
+//     .get(getTourStats);
+//
+// router
+//     .route("/:id")
+//     .get(findTour)
+//     .put(updateTour)
+//     .delete(deleteTour);
+//
+// module.exports = router
+
+const express = require('express');
+const tourController = require('./../controllers/toursController');
+const authController = require('./../controllers/authController');
+
+const router = express.Router();
+
+// router.param('id', tourController.checkID);
+
+router
+    .route('/top-5-cheap')
+    .get(tourController.aliasTopTours, tourController.getAllTours);
+
+router.route('/tour-stats').get(tourController.getTourStats);
+router.route('/monthly-plan/:year').get(tourController.getMonthlyPlan);
+
+router
+    .route('/')
+    .get(authController.protect, tourController.getAllTours)
+    .post(tourController.createTour);
+
+router
+    .route('/:id')
+    .get(tourController.getTour)
+    .patch(tourController.updateTour)
+    .delete(
+        authController.protect,
+        authController.restrictTo('admin', 'lead-guide'),
+        tourController.deleteTour
+    );
+
+module.exports = router;
+

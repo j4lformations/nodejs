@@ -1,0 +1,16 @@
+{
+  "name": "express-mongo-01",
+  "version": "1.0.0",
+  "description": "Mise un place d'une API basique",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app"
+  },
+  "keywords": [],
+  "author": "Joachim Zadi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.14"
+  }
+}

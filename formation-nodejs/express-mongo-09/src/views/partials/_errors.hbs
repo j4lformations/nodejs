@@ -1,0 +1,18 @@
+{{#if error}}
+    <div class="callout alert">
+        <ul>
+            <li>{{error}}</li>
+        </ul>
+    </div>
+{{/if}}
+
+{{#if errors}}
+    <div class="callout alert">
+        {{#each errors}}
+            <ul>
+                <li>{{text}}</li>
+            </ul>
+        {{else}}
+        {{/each}}
+    </div>
+{{/if}}

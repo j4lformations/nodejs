@@ -1,0 +1,43 @@
+<div class="callout app-form">
+    <h3>Register form</h3>
+</div>
+<form method="POST"  data-abide novalidate>
+    <div class="grid-x grid-margin-x">
+        <div class="cell">
+            <div data-abide-error class="alert callout" style="display: none;">
+                <p><i class="fi-alert"></i> Il y a quelques erreurs dans votre formulaire.</p>
+            </div>
+        </div>
+    </div>
+    <fieldset class="fieldset">
+        <legend>Créez votre compte</legend>
+        <p>
+            <label>Prénom
+                <input type="text" placeholder="Saisir votre prénom" name="prenom" value="{{prenom}}" required/>
+                <span class="form-error">Le champ prénom est obligatoire</span>
+            </label>
+        </p>
+        <p>
+            <label>Identifiant
+                <input type="email" placeholder="Saisir votre mot identifant au format @email" name="email" value="{{email}}" required/>
+                <span class="form-error">Le champ identifiant est obligatoire</span>
+            </label>
+        </p>
+        <p>
+            <label>Mot de passe
+                <input type="password" placeholder="Saisir votre mot de passe" name="mdp" value="{{mdp}}" required/>
+                <span class="form-error">Le champ mot de passe est obligatoire</span>
+            </label>
+        </p>
+        <p>
+            <label>Confirmez votre mot de passe
+                <input type="password" placeholder="Confirmez le mot de passe" name="mdp2" value="{{mdp2}}"  required/>
+                <span class="form-error">Le champ confirmation de mot de passe est obligatoire</span>
+            </label>
+        </p>
+        <p class="align-middle">
+            <button type="submit" class="button float-left">Valider</button>
+            <button type="reset" class="button float-right reset">Reset</button>
+        </p>
+    </fieldset>
+</form>
